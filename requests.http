@@ -1,0 +1,49 @@
+### Створити пристрій
+POST http://localhost:8080/api/v1/devices
+Content-Type: application/json
+
+{
+  "name": "Main Thermal Sensor",
+  "ip_address": "192.168.1.50",
+  "type": "sensor",
+  "status": "online"
+}
+
+### Отримати всі пристрої
+GET http://localhost:8080/api/v1/devices
+
+### Отримати пристрій за ID
+GET http://localhost:8080/api/v1/devices/dev-001
+
+### Оновити пристрій
+PUT http://localhost:8080/api/v1/devices/dev-001
+Content-Type: application/json
+
+{
+  "name": "Main Thermal Sensor 2",
+  "ip_address": "192.168.1.51",
+  "type": "sensor",
+  "status": "offline"
+}
+
+### Фільтр за статусом і типом
+GET http://localhost:8080/api/v1/devices?status=offline&type=sensor
+
+### Видалити пристрій
+DELETE http://localhost:8080/api/v1/devices/dev-001
+
+### Перевірити 404 після видалення
+GET http://localhost:8080/api/v1/devices/dev-001
+
+### Перевірити валідацію
+POST http://localhost:8080/api/v1/devices
+Content-Type: application/json
+
+{
+  "name": "",
+  "ip_address": "192.168.1.80",
+  "type": "sensor"
+}
+
+### CORS preflight
+OPTIONS http://localhost:8080/api/v1/devices
